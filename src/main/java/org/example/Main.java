@@ -9,6 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
         Locale locale = Locale.GERMANY;
+
+        // Змінні оголошуємо один раз і перевикористовуємо для кожного товару
           //Product No-1
         int productNo = 1;
         String productName = "smartphone";
