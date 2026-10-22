@@ -11,7 +11,7 @@ public class Main {
           total = total + num;
 
           String line = num + ") Num is " + num + ", sum us " + total;
-          System.out.println(line);
+          System.out.println(line );
       }
       System.out.println("------------------------");
       System.out.println("Sum of numbers is " + total);
