@@ -1,79 +1,79 @@
 package org.example;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class Main {
+       public static void printSquare(int number) {
+              System.out.println("Квадрта числа " + number + " дорівнює " + (number*number) + ".");
+       }
+       public static double cylinderVolume(double radius, double height) {
+              return Math.PI * radius * radius * height;
+       }
+       public static int sumArray(int[] array) {
+              int sum = 0;
+              for (int value : array) {
+                     sum += value;
+              }
+              return sum;
+       }
+       public static String reverseString(String text) {
+              return new StringBuilder(text).reverse().toString();
+       }
+       public static long power(int a, int b) {
+              long result = 1;
+              for (int i = 0; i < b; i++) {
+                     result *= a;
+              }
+              return result;
+       }
+       public static void printRepeated(int n, String text) {
+              for (int i = 0; i < n; i++) {
+                     System.out.println(text);
+              }
+       }
+       public static void main(String[] args) {
+              Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        final int N = 4;
 
-     int[][] matrix = {
-            { 23, 7, 41, 15 },
-            { 38, 12, 29, 4 },
-            { 19, 46, 8, 33 },
-            { 27, 35, 50, 11},
+              System.out.print("1. Введіть ціле число: ");
+              int number = sc.nextInt();
+              printSquare(number);
 
-     };
-      System.out.println("Матриця 4х4:");
-      for (int i = 0; i < N; i++) {
-          for (int j = 0; j < N; j++) {
-              System.out.printf("%5d", matrix[i][j]);
-          }
-          System.out.println();
-      }
 
-      long sumEvenRows = 1, sumOddRows = 1;
-      for (int i = 0; i < N; i++) {
-          for (int j = 0; j < N; j++) {
-              if (i %2 == 0) sumEvenRows += matrix[i][j];
-              else           sumOddRows += matrix[i][j];
-          }
-      }
-      long prodEvenCols = 1, prodOddCols = 1;
-      for (int i = 0; i < N; i++) {
-          for (int j = 0; j < N; j++) {
-              if(j %2 == 0) prodEvenCols *= matrix[i][j];
-              else          prodOddCols *= matrix[i][j];
-          }
-      }
-        System.out.println();
-        System.out.println("Сума елементів у парних рядках (0, 2):        " + sumEvenRows);
-        System.out.println("Сума елементів у непарних рядках (1, 3):      " + sumOddRows);
-        System.out.println("Добуток елементів у парних стовпцях (0, 2):   " + prodEvenCols);
-        System.out.println("Добуток елементів у непарних стовпцях (1, 3): " + prodOddCols);
+              double radius = 5.0;
+              double height = 12.5;
+              double volume = cylinderVolume(radius, height);
+              System.out.println("\n2. Об'єм циліндра з радіусом " + radius + " і висотою " + height + " дорівнює " + volume + ".");
 
-        System.out.println();
-        System.out.println(isMagicSquare(matrix)
-                ? "Матриця є магічним квадратом."
-                : "Матриця не є магічним квадратом.");
 
-        int[][][][] fourDimArray = {
-                {{ {5, 8},   {9, 14} }, { {16, 18}, {20, 24} }
-                },
-                {{ {28, 29}, {31, 36} }, { {40, 47}, {49, 50} }
-                }
-        };
+              int[] numbers = {3, 7, 15, 22, 8};
+              System.out.println("\n3. Масив чисел: " + Arrays.toString(numbers));
+              System.out.println("Сума всіх елементів масиву дорівнює " + sumArray(numbers) + ".");
+
+
+              sc.nextLine();
+              System.out.print("\n4. Введіть рядок: ");
+              String line = sc.nextLine();
+              System.out.println("Рядок у зворотньому порядку:" + reverseString(line));
+
+
+              System.out.print("\n5. Введіть а: ");
+              int a = sc.nextInt();
+              System.out.print("Введіть b: ");
+              int b = sc.nextInt();
+              System.out.println("Результат " + a + "^" + b + " дорівнює " + power(a, b) + ".");
+
+              System.out.print("\n6. Введіть ціле число n: ");
+              int n = sc.nextInt();
+              sc.nextLine();
+              System.out.print("Ведіть текстовий рядок: ");
+              String text = sc.nextLine();
+              printRepeated(n, text);
+
+              sc.close();
 
        }
-       static boolean isMagicSquare(int[][] matrix) {
-        int n = matrix.length;
 
-        int target = 0;
-        for (int j = 0; j < n; j++) {
-            target += matrix[0][j];
-        }
-        for (int i = 0; i < n; i++) {
-            int rowSum = 0, colSum = 0;
-            for (int j = 0; j < n; j++) {
-                rowSum += matrix[i][j];
-                colSum += matrix[i][j];
-            }
-            if (rowSum != target || colSum != target) return false;
 
-        }
-        int diag1 = 0, diag2 = 0;
-        for (int i = 0; i < n; i++) {
-            diag1 += matrix[i][i];
-            diag2 += matrix[i][n - 1 - i];
-        }
-        return diag1 == target && diag2 == target;
        }
-    }
