@@ -2,11 +2,11 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        Printer<ConsolePrinter.Message> printer = new ConsolePrinter();
+        Advisor advisior = new DayAdvisor();
 
-        printer.print(new ConsolePrinter.Message("Hello!", "Artur"));
-        printer.print(new ConsolePrinter.Message("Hello!", "null"));
-        printer.print(new ConsolePrinter.Message("Hello!", ""));
-        printer.print(new ConsolePrinter.Message(null, null));
+            for (Day day : Day.values()) {
+                System.out.print(day + ": ");
+                advisior.advise(day);
+         }
     }
 }
